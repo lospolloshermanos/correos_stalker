@@ -38,6 +38,7 @@ gem 'foundation-rails', '~> 5.4.5'
 
 gem 'simple_form'
 
+gem 'nokogiri'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

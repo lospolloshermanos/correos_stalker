@@ -1,0 +1,6 @@
+.row
+  .large-12.columns
+    = simple_form_for @correos_checker do |f|
+      = f.input :email
+      = f.input :tracking_number
+      = f.submit 'Añadir', class: 'button'
