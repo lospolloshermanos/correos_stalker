@@ -1,2 +1,10 @@
-Hola
-= @checker.status
+.row
+  .large-2.columns
+    %label Estado actual del paquete
+  .large-10.columns
+    %label= @checker.status
+.row
+  .large-2.columns
+    %label Numero de seguimiento
+  .large-12.columns
+    %label= @checker.tracking_number

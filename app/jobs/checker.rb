@@ -5,5 +5,9 @@ class Checker
     CorreosChecker.unfinished.each do |correos_checker|
     	correos_checker.check_tracking_state
     end
+
+    CorreosChecker.completed.each do |correos_checker|
+    	correos_checker.remove_tracking_number
+    end
   end
 end
