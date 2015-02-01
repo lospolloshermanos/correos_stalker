@@ -20,7 +20,7 @@ class CorreosChecker < ActiveRecord::Base
       current_status = doc.css('.txtCabeceraTabla').last.css('td').last.text
       if current_status != status
         update_column :status, current_status
-        #TODO send email
+        UserMailer.status_updated(self).deliver
       end
     end
   end
