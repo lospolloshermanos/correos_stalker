@@ -9,7 +9,7 @@ class CorreosChecker < ActiveRecord::Base
   validates :tracking_number, presence: true
 
   scope :unfinished, -> { where('completed_at is NULL') }
-
+  #scope :completed, -> { where('completed_at is_not NULL and DATEDIFF(completed_at )') }
   def check_tracking_state
     url = "http://aplicacionesweb.correos.es/localizadorenvios/track.asp?numero=#{tracking_number}"
     doc = Nokogiri::HTML(open(url))
@@ -18,8 +18,12 @@ class CorreosChecker < ActiveRecord::Base
       increment_counter :error_count, id
     else
       current_status = doc.css('.txtCabeceraTabla').last.css('td').last.text
+
       if current_status != status
-        update_column :status, current_status
+        updated_attributes = { status: current_status}
+        updated_attributes.merge( completed_at: Time.now ) if current_status.include?('Entregado')
+        self.class.update_all updated_attributes, id: id
+
         UserMailer.status_updated(self).deliver
       end
     end
