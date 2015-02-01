@@ -4,7 +4,7 @@ class CreateCorreosChecker < ActiveRecord::Migration
       t.string    :email
       t.string    :tracking_number
       t.string    :status
-      t.integer  :error_count
+      t.integer   :error_count, default: 0
       t.date      :completed_at
 
       t.timestamps

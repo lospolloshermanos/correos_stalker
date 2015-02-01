@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   root to: 'correos_checkers#new'
   resources :correos_checkers, except: :update
+
+  get 'check' => 'correos_checkers#check_tracking_numbers'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
