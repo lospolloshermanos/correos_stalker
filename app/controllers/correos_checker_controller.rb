@@ -1,0 +1,3 @@
+class CorreosCheckerController < ApplicationController
+
+end

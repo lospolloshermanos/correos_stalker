@@ -47,6 +47,9 @@ GEM
     erubis (2.7.0)
     excon (0.44.0)
     execjs (2.2.2)
+    foundation-rails (5.4.5.0)
+      railties (>= 3.1.0)
+      sass (>= 3.2.0)
     haml (4.0.6)
       tilt
     haml-rails (0.8.2)
@@ -103,16 +106,20 @@ GEM
     rdoc (4.2.0)
     ruby_parser (3.6.4)
       sexp_processor (~> 4.1)
-    sass (3.2.19)
-    sass-rails (4.0.5)
+    sass (3.4.11)
+    sass-rails (5.0.1)
       railties (>= 4.0.0, < 5.0)
-      sass (~> 3.2.2)
-      sprockets (~> 2.8, < 3.0)
-      sprockets-rails (~> 2.0)
+      sass (~> 3.1)
+      sprockets (>= 2.8, < 4.0)
+      sprockets-rails (>= 2.0, < 4.0)
+      tilt (~> 1.1)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     sexp_processor (4.4.5)
+    simple_form (3.1.0)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
     slop (3.6.0)
     spring (1.2.0)
     sprockets (2.12.3)
@@ -146,13 +153,15 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.0.0)
+  foundation-rails (~> 5.4.5)
   haml-rails
   jbuilder (~> 2.0)
   jquery-rails
   mandrill-api
   rails (= 4.1.8)
-  sass-rails (~> 4.0.3)
+  sass-rails (~> 5.0.1)
   sdoc (~> 0.4.0)
+  simple_form
   spring
   sqlite3
   sucker_punch
