@@ -17,8 +17,7 @@ ActiveRecord::Schema.define(version: 20150201104527) do
     t.string   "email"
     t.string   "tracking_number"
     t.string   "status"
-    t.integer  "error_count",     default: 0
-    t.date     "completed_at"
+    t.datetime "completed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
