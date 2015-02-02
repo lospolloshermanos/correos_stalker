@@ -13,16 +13,21 @@ class CorreosChecker < ActiveRecord::Base
 
   def check_tracking_state
 
-    #url = "http://aplicacionesweb.correos.es/localizadorenvios/track.asp?numero=#{tracking_number}"
-    #doc = Nokogiri::HTML(open(url))
+    url = "http://aplicacionesweb.correos.es/localizadorenvios/track.asp?numero=#{tracking_number}"
+    doc = Nokogiri::HTML(open(url))
 
-    randomString = ('a'..'z').to_a.shuffle[0,8].join
-    doc = Nokogiri::HTML("<html><body><div><tr class='txtCabeceraTabla'><td>#{randomString}</td></tr></div></body></html>")
+    #debug#
+    #tempStatus = "#{Time.now.to_s}#{Time.now.to_s}"
+    #tempStatus = "No disponemos de infor"
+    #tempStatus = "Entregado"
+    #doc = Nokogiri::HTML("<html><body><div><tr class='txtCabeceraTabla'><td>#{tempStatus}</td></tr></div></body></html>")
+    #######
+
 
     if doc.css('body div').first.to_s.match(/No disponemos de infor/)
-      increment_counter :error_count, id
+      remove_tracking_number if created_at < 5.days.ago
     else
-      current_status = doc.css('.txtCabeceraTabla').last.css('td').last.text
+      current_status = doc.css('.txtCabeceraTabla').last.css('td').last.text.strip
 
       if current_status != status
         updated_attributes = { status: current_status }
@@ -42,5 +47,4 @@ class CorreosChecker < ActiveRecord::Base
   def downcase_email
   	self.email = email.downcase
   end
-
 end

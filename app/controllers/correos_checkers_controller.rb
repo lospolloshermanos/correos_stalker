@@ -19,7 +19,6 @@ class CorreosCheckersController < ApplicationController
   def check_tracking_numbers
     Checker.new.async.perform
     render nothing: true, status: 200
-
   end
 
   private
