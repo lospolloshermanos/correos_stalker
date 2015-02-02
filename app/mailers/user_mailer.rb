@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: 'checkerbot@chekerbotteam.com'
+  default from: 'noreply@correoscheckerbot.com'
 
 	def status_updated(checker)
       @checker =  checker
