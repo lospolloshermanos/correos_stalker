@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150201104527) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "correos_checkers", force: true do |t|
     t.string   "email"
     t.string   "tracking_number"
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 20150201104527) do
     t.datetime "updated_at"
   end
 
-  add_index "correos_checkers", ["email"], name: "index_correos_checkers_on_email"
-  add_index "correos_checkers", ["tracking_number"], name: "index_correos_checkers_on_tracking_number", unique: true
+  add_index "correos_checkers", ["email"], name: "index_correos_checkers_on_email", using: :btree
+  add_index "correos_checkers", ["tracking_number"], name: "index_correos_checkers_on_tracking_number", unique: true, using: :btree
 
 end
