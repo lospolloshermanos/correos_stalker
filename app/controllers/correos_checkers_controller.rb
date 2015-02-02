@@ -8,7 +8,7 @@ class CorreosCheckersController < ApplicationController
     @correos_checker = CorreosChecker.new(create_params)
 
     if @correos_checker.save
-      flash[:notice] = "Añadido tracking number"
+      flash[:success] = "Número de seguimiento añadido al sistema."
       redirect_to new_correos_checker_url
     else
       flash[:alert] = @correos_checker.errors.full_messages.first
