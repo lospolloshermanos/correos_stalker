@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150202225803) do
+ActiveRecord::Schema.define(version: 20150203170222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,5 +61,6 @@ ActiveRecord::Schema.define(version: 20150202225803) do
 
   add_index "correos_checkers", ["email"], name: "index_correos_checkers_on_email", using: :btree
   add_index "correos_checkers", ["tracking_number"], name: "index_correos_checkers_on_tracking_number", unique: true, using: :btree
+  add_index "correos_checkers", ["unsubscribe_hash"], name: "index_correos_checkers_on_unsubscribe_hash", unique: true, using: :btree
 
 end
