@@ -1,4 +1,42 @@
+html{
+  -webkit-font-smoothing: antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+body{
+  background-color: #044A59 !important;
+}
+
+abbr, h4, label{
+  color: white !important;
+}
+
 #main{
-  padding-top: 50px;
-  padding-bottom: 25px;
+  padding: 50px 20px 25px 20px;
+}
+
+#header-row{
+  h1{
+    color: #DF4726 !important;
+    font-size: 4em !important;
+  }
+  a img{
+    padding-top: 30px;
+    display:block;
+    margin:auto;
+  }
+}
+
+#form-row{
+  margin-top: 60px;
+}
+
+.button{
+  background-color: #333 !important;
+}
+
+footer{
+  margin-top: 120px;
+	color: white;
+	text-align: center;
 }

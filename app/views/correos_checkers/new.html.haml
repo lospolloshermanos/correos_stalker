@@ -1,4 +1,12 @@
-.row
+.row#header-row
+  .large-7.small-12.columns
+    %h1 ¡Pataliebres!
+    %h4 ¿Cansad@s de comprobar el estado de un pedido en la web de Correos de forma manual?
+    %label Subscríbete y mantente informado de los cambios de estado de tu pedido de forma totalmente gratuita.
+  .large-3.small-12.columns
+    = link_to "#" do
+      = image_tag "header-image2.png"
+.row#form-row
   .large-12.columns
     = simple_form_for @correos_checker do |f|
       = f.input :email
