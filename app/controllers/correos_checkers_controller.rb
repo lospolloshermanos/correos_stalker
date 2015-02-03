@@ -21,6 +21,11 @@ class CorreosCheckersController < ApplicationController
     render nothing: true, status: 200
   end
 
+  def unsubscribe
+    @correos_checker = CorreosChecker.find_by_unsubscribe_hash(params[:unsubscribe_hash])
+    @correos_checker.destroy
+  end
+
   private
 
   def create_params

@@ -121,7 +121,7 @@
                       %br
                         %br
                           Si deseas dejar de recibir actualizaciones has click en el siguiente
-                          %a{:href => "#", :style => "color:#aaaaaa"} link.
+                          = link_to 'link', unsubscribe_url(@checker.unsubscribe_hash), { :style => 'color:#aaaaaa' }
                           %br
                             %br
                             %a{:href => "https://correos-stalker.herokuapp.com/", :style => "color:#aaaaaa"} https://correos-stalker.herokuapp.com/

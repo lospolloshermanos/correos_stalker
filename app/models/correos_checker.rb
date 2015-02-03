@@ -1,4 +1,5 @@
 class CorreosChecker < ActiveRecord::Base
+  before_create :add_unsubscribe_hash
   before_save :downcase_email
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -54,5 +55,9 @@ class CorreosChecker < ActiveRecord::Base
   private
   def downcase_email
   	self.email = email.downcase
+  end
+
+  def add_unsubscribe_hash
+    self.unsubscribe_hash = SecureRandom.hex
   end
 end
