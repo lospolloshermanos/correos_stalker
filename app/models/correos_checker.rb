@@ -40,6 +40,8 @@ class CorreosChecker < ActiveRecord::Base
             self.class.where(id: id).update_all(updated_attributes)
             self.reload
             UserMailer.status_updated(self).deliver
+          else
+            remove_tracking_number if created_at < 50.days.ago
           end
         end
       end
