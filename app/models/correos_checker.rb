@@ -9,7 +9,7 @@ class CorreosChecker < ActiveRecord::Base
                     format: { with: VALID_EMAIL_REGEX }
 
   validates :tracking_number, presence: true,
-                    format: { with: VALID_EMAIL_REGEX }
+                    format: { with: VALID_TRACKING_NUMBER }
 
   scope :unconfirmed, -> { where("confirmed is FALSE and created_at < '#{1.days.ago}'") }
   scope :unfinished, -> { where('completed_at is NULL and confirmed is TRUE') }
