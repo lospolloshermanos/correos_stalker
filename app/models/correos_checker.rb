@@ -3,11 +3,13 @@ class CorreosChecker < ActiveRecord::Base
   before_save :downcase_email
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_TRACKING_NUMBER = /\A[\w+]+\z/i
 
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX }
 
-  validates :tracking_number, presence: true
+  validates :tracking_number, presence: true,
+                    format: { with: VALID_EMAIL_REGEX }
 
   scope :unconfirmed, -> { where("confirmed is FALSE and created_at < '#{1.days.ago}'") }
   scope :unfinished, -> { where('completed_at is NULL and confirmed is TRUE') }
