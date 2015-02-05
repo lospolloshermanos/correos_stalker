@@ -101,4 +101,4 @@
                 %td.container-padding.content{:align => "left", :style => "padding-left:24px;padding-right:24px;padding-top:12px;padding-bottom:12px;background-color:#ffffff"}
                   %br
                   = yield
-                  = render 'layouts/mailer_footer'
+                  = render partial: "layouts/mailer_footer" if action_name == 'status_updated'

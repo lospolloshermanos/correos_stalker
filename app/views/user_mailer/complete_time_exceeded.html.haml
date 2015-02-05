@@ -1,0 +1,13 @@
+.title{:style => "font-family:Helvetica, Arial, sans-serif;font-size:18px;font-weight:600;color:#374550"} Tiempo máximo de completado excedido
+%br
+.body-text{:style => "font-family:Helvetica, Arial, sans-serif;font-size:14px;line-height:20px;text-align:left;color:#333333"}
+  %p{:style => "margin-top: 30px"}
+    Tu subscripción para el siguiente código de seguimiento ha sido dada de baja:
+    %strong
+      = @checker.tracking_number
+  %p
+    Tras un largo periodo de inactividad en la web de correos hemos dado de baja tu número de seguimiento.
+
+  %p
+    Si deseas volver a incorporar la subscripción al sistema no dudes en visitar de nuevo la página.
+  = link_to 'https://correos-stalker.herokuapp.com/', 'https://correos-stalker.herokuapp.com/', { :target => "_blank", :class => 'button-link' }

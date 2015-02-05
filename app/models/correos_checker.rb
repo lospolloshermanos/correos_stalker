@@ -28,7 +28,10 @@ class CorreosChecker < ActiveRecord::Base
       #######
 
       if doc.css('body div').first.to_s.match(/No disponemos de infor/)
-        remove_tracking_number if created_at < 5.days.ago
+        if created_at < 7.days.ago
+          remove_tracking_number
+          UserMailer.invalid_tracking_number(self).deliver
+        end
       else
         current_status = doc.css('span.txtNormal').last
         if current_status.blank?
@@ -42,7 +45,10 @@ class CorreosChecker < ActiveRecord::Base
             self.reload
             UserMailer.status_updated(self).deliver
           else
-            remove_tracking_number if created_at < 50.days.ago
+            if created_at < 60.days.ago
+              remove_tracking_number
+              UserMailer.complete_time_exceeded(self).deliver
+            end
           end
         end
       end

@@ -11,4 +11,14 @@ class UserMailer < ActionMailer::Base
       @checker =  checker
       mail to: @checker.email, subject: 'Estado Actualizado'
 	end
+
+  def invalid_tracking_number(checker)
+      @checker =  checker
+      mail to: @checker.email, subject: 'Número De Seguimiento Inválido'
+  end
+
+  def complete_time_exceeded(checker)
+      @checker =  checker
+      mail to: @checker.email, subject: 'Tiempo Máximo De Completado Excedido'
+  end
 end
