@@ -15,3 +15,10 @@
           %strong Estado
           %br
             = @checker.status
+            %br
+        .tracking-status
+        - if not @checker.description.blank?
+          .tracking-status
+            %strong Descripción
+            %br
+              = @checker.description

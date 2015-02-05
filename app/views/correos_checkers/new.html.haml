@@ -9,6 +9,7 @@
 .row#form-row
   .large-12.columns
     = simple_form_for @correos_checker do |f|
-      = f.input :email
-      = f.input :tracking_number
+      = f.input :email, placeholder: "Introduce el correo electrónico"
+      = f.input :tracking_number, placeholder: "Introduce el código de seguimiento"
+      = f.input :description, placeholder: "Introduce una descripción del código de seguimiento que te ayude a identificarlo (optativo)"
       = f.submit 'Añadir', class: 'button'

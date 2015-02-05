@@ -45,6 +45,6 @@ class CorreosCheckersController < ApplicationController
   private
 
   def create_params
-    params.require(:correos_checker).permit(:email,:tracking_number)
+    params.require(:correos_checker).permit(:email,:tracking_number, :description)
   end
 end

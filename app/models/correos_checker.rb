@@ -8,8 +8,10 @@ class CorreosChecker < ActiveRecord::Base
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX }
 
-  validates :tracking_number, presence: true,
+  validates :tracking_number, presence: true, length: { maximum: 50 },
                     format: { with: VALID_TRACKING_NUMBER }
+
+  validates :description, length: { maximum: 255 }
 
   scope :unconfirmed, -> { where("confirmed is FALSE and created_at < '#{1.days.ago}'") }
   scope :unfinished, -> { where('completed_at is NULL and confirmed is TRUE') }
