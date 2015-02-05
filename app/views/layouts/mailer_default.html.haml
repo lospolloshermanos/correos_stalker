@@ -1,0 +1,104 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+      %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+        / So that mobile will display zoomed in
+        %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
+          / enable media queries for windows phone 8
+          %meta{:content => "telephone=no", :name => "format-detection"}
+            / disable auto telephone linking in iOS
+            %title Single Column
+            :css
+              body {
+                margin: 0;
+                padding: 0;
+                -ms-text-size-adjust: 100%;
+                -webkit-text-size-adjust: 100%;
+              }
+
+              table {
+                border-spacing: 0;
+              }
+
+              table td {
+                border-collapse: collapse;
+              }
+
+              .ExternalClass {
+                width: 100%;
+              }
+
+              .ExternalClass,
+              .ExternalClass p,
+              .ExternalClass span,
+              .ExternalClass font,
+              .ExternalClass td,
+              .ExternalClass div {
+                line-height: 100%;
+              }
+
+              .ReadMsgBody {
+                width: 100%;
+                background-color: #ebebeb;
+              }
+
+              table {
+                mso-table-lspace: 0pt;
+                mso-table-rspace: 0pt;
+              }
+
+              img {
+                -ms-interpolation-mode: bicubic;
+              }
+
+              .yshortcuts a {
+                border-bottom: none !important;
+              }
+
+              @media screen and (max-width: 599px) {
+                table[class="force-row"],
+                table[class="container"] {
+                  width: 100% !important;
+                  max-width: 100% !important;
+                }
+              }
+              @media screen and (max-width: 400px) {
+                td[class*="container-padding"] {
+                  padding-left: 12px !important;
+                  padding-right: 12px !important;
+                }
+              }
+              .ios-footer a {
+                color: #aaaaaa !important;
+                text-decoration: underline;
+              }
+              span#title{
+                color: #00457D
+              }
+              .tracking-number{
+                height: 60px;
+              }
+              .tracking-status{
+              }
+              .button-link {
+                  padding: 10px 15px;
+                  background: #4479BA;
+                  color: #FFF;
+                  text-decoration: none;
+              }
+
+  %body{:bgcolor => "#F0F0F0", :leftmargin => "0", :marginheight => "0", :marginwidth => "0", :style => "margin:0; padding:0;", :topmargin => "0"}
+    / 100% background wrapper (grey background)
+    %table{:bgcolor => "#F0F0F0", :border => "0", :cellpadding => "0", :cellspacing => "0", :height => "100%", :width => "100%"}
+      %tr
+        %td{:align => "center", :bgcolor => "#F0F0F0", :style => "background-color: #F0F0F0;", :valign => "top"}
+          %br
+            / 600px container (white background)
+            %table.container{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "width:600px;max-width:600px", :width => "600"}
+              = render 'layouts/mailer_header'
+              %tr
+                %td.container-padding.content{:align => "left", :style => "padding-left:24px;padding-right:24px;padding-top:12px;padding-bottom:12px;background-color:#ffffff"}
+                  %br
+                  = yield
+                  = render 'layouts/mailer_footer'

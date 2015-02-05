@@ -8,10 +8,11 @@ class CorreosCheckersController < ApplicationController
     @correos_checker = CorreosChecker.new(create_params)
 
     if @correos_checker.save
-      flash[:success] = "Número de seguimiento añadido al sistema."
+      flash[:warning] = "Hemos enviado un email a tu dirección de correo, tienes 24 horas para confirmar la subscripción."
+      UserMailer.confirm_subscription(@correos_checker).deliver
       redirect_to new_correos_checker_url
     else
-      flash[:alert] = @correos_checker.errors.full_messages.first
+      flash.now[:alert] = @correos_checker.errors.full_messages.first
       render 'new'
     end
   end
@@ -21,9 +22,24 @@ class CorreosCheckersController < ApplicationController
     render nothing: true, status: 200
   end
 
+  def subscribe
+    @correos_checker = CorreosChecker.find_by_token(params[:token])
+    if @correos_checker.confirmed
+      flash.now[:warning] = "La subscripción ya se encuentra dada de alta."
+    else
+      @correos_checker.update(confirmed: true)
+      flash.now[:success] = "La subscripción acaba de ser dada de alta."
+    end
+  end
+
   def unsubscribe
-    @correos_checker = CorreosChecker.find_by_unsubscribe_hash(params[:unsubscribe_hash])
-    @correos_checker.destroy
+    @correos_checker = CorreosChecker.find_by_token(params[:token])
+    if @correos_checker
+      @correos_checker.destroy
+      flash.now[:success] = "La subscripción ha sido dada de baja del sistema."
+    else
+      flash.now[:alert] = "No existe esa subscripción en el sistema."
+    end
   end
 
   private

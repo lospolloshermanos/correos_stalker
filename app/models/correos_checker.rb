@@ -1,5 +1,5 @@
 class CorreosChecker < ActiveRecord::Base
-  before_create :add_unsubscribe_hash
+  before_create :generate_token
   before_save :downcase_email
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -9,7 +9,8 @@ class CorreosChecker < ActiveRecord::Base
 
   validates :tracking_number, presence: true
 
-  scope :unfinished, -> { where('completed_at is NULL') }
+  scope :unconfirmed, -> { where("confirmed is FALSE and created_at < '#{1.days.ago}'") }
+  scope :unfinished, -> { where('completed_at is NULL and confirmed is TRUE') }
   scope :completed, -> { where("completed_at is not NULL and completed_at < '#{2.days.ago}'") }
 
   def check_tracking_state
@@ -23,7 +24,7 @@ class CorreosChecker < ActiveRecord::Base
       #tempStatus = "#{Time.now.to_s}#{Time.now.to_s}"
       #tempStatus = "No disponemos de infor"
       #tempStatus = "Entregado"
-      #doc = Nokogiri::HTML("<html><body><div><tr class='txtCabeceraTabla'><td>#{tempStatus}</td></tr></div></body></html>")
+      #doc = Nokogiri::HTML("<html><body><div><tr class='txtCabeceraTabla'><td><span class='txtNormal'>#{tempStatus}</span></td></tr></div></body></html>")
       #######
 
       if doc.css('body div').first.to_s.match(/No disponemos de infor/)
@@ -59,7 +60,7 @@ class CorreosChecker < ActiveRecord::Base
   	self.email = email.downcase
   end
 
-  def add_unsubscribe_hash
-    self.unsubscribe_hash = SecureRandom.hex
+  def generate_token
+    self.token = SecureRandom.hex
   end
 end

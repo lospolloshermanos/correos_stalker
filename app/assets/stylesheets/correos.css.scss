@@ -3,10 +3,6 @@ html{
   text-rendering:optimizeLegibility;
 }
 
-body{
-  background-color: #044A59 !important;
-}
-
 abbr, h4, label{
   color: white !important;
 }
@@ -32,12 +28,19 @@ abbr, h4, label{
   margin-top: 60px;
 }
 
-.button{
-  background-color: #333 !important;
+.msg-box{
+  h5{
+    color: #222;
+  }
+  text-align: center;
+}
+
+.alert-box{
+  text-align: center;
 }
 
 footer{
-  margin-top: 120px;
+  margin-top: 80px;
 	color: white;
 	text-align: center;
 }

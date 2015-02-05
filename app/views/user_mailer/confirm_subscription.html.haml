@@ -1,0 +1,11 @@
+.title{:style => "font-family:Helvetica, Arial, sans-serif;font-size:18px;font-weight:600;color:#374550"} Por favor confirma tu subscripción
+%br
+  %br
+  .body-text{:style => "font-family:Helvetica, Arial, sans-serif;font-size:14px;line-height:20px;text-align:left;color:#333333"}
+    = link_to 'Confirmar Subscripción', subscribe_url(@checker.token), { :target => "_blank", :class => 'button-link' }
+    %p{:style => "margin-top: 30px"}
+      Hemos recibido una petición de incorporar al sistema el siguiente código de seguimiento:
+      %strong
+        = @checker.tracking_number
+    %p
+      En el caso de que alguien haya introducido tu dirección de correo electrónico por error, simplemente ignora este mensaje y nos encargaremos de que no vuelvas a recibir notificaciones.

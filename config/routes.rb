@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   resources :correos_checkers, except: :update
 
   get 'check' => 'correos_checkers#check_tracking_numbers'
-  get 'correos_checkers/unsubscribe/:unsubscribe_hash' => 'correos_checkers#unsubscribe', :as => 'unsubscribe'
+  get 'correos_checkers/unsubscribe/:token' => 'correos_checkers#unsubscribe', :as => 'unsubscribe'
+  get 'correos_checkers/subscribe/:token' => 'correos_checkers#subscribe', :as => 'subscribe'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
