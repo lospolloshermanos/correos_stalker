@@ -4,21 +4,21 @@ class UserMailer < ActionMailer::Base
 
 	def confirm_subscription(checker)
       @checker =  checker
-      mail to: @checker.email, subject: 'Por Favor, Confirma Tu Suscripción'
+      mail to: @checker.email, subject: "Por favor, confirma tu suscripción a #{@checker.tracking_number}"
 	end
 
 	def status_updated(checker)
       @checker =  checker
-      mail to: @checker.email, subject: 'Estado Actualizado'
+      mail to: @checker.email, subject: 'Estado actualizado'
 	end
 
   def invalid_tracking_number(checker)
       @checker =  checker
-      mail to: @checker.email, subject: 'Número De Seguimiento Inválido'
+      mail to: @checker.email, subject: 'Número de seguimiento inválido'
   end
 
   def complete_time_exceeded(checker)
       @checker =  checker
-      mail to: @checker.email, subject: 'Tiempo Máximo De Completado Excedido'
+      mail to: @checker.email, subject: 'Tiempo máximo de completado excedido'
   end
 end
