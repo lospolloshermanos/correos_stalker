@@ -8,7 +8,7 @@ class CorreosChecker < ActiveRecord::Base
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX }
 
-  validates :tracking_number, presence: true, length: { maximum: 50 },
+  validates :tracking_number, presence: true, length: { maximum: 50 }, uniqueness: true,
                     format: { with: VALID_TRACKING_NUMBER_REGEX }
 
   validates :description, length: { maximum: 255 }
