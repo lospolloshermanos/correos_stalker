@@ -3,13 +3,13 @@ class CorreosChecker < ActiveRecord::Base
   before_save :downcase_email
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  VALID_TRACKING_NUMBER = /\A[\w]+\z/i
+  VALID_TRACKING_NUMBER_REGEX = /\A[\w]+\z/i
 
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX }
 
   validates :tracking_number, presence: true, length: { maximum: 50 },
-                    format: { with: VALID_TRACKING_NUMBER }
+                    format: { with: VALID_TRACKING_NUMBER_REGEX }
 
   validates :description, length: { maximum: 255 }
 
