@@ -2,7 +2,7 @@
   .large-7.small-12.columns
     %h1 ¡Pataliebres!
     %h4 ¿Cansad@s de comprobar el estado de un pedido en la web de Correos de forma manual?
-    %label Subscríbete y mantente informado de los cambios de estado en tu pedido de forma automática.
+    %label Suscríbete y mantente informado de los cambios de estado en tu pedido de forma automática.
   .large-3.small-12.columns
     = link_to "#" do
       = image_tag "header-image2.png"
@@ -11,5 +11,5 @@
     = simple_form_for @correos_checker do |f|
       = f.input :email, placeholder: "Introduce el correo electrónico"
       = f.input :tracking_number, placeholder: "Introduce el código de seguimiento"
-      = f.input :description, placeholder: "Introduce una descripción del código de seguimiento que te ayude a identificarlo (optativo)"
-      = f.submit 'Añadir', class: 'button'
+      = f.input :description, placeholder: "Descripción del pedido (optativo)"
+      = f.submit 'Suscribirse', class: 'button expand'

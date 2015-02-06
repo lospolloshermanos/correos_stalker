@@ -4,7 +4,7 @@ class UserMailer < ActionMailer::Base
 
 	def confirm_subscription(checker)
       @checker =  checker
-      mail to: @checker.email, subject: "Por favor, confirma tu subscripción a #{@checker.tracking_number}"
+      mail to: @checker.email, subject: "Por favor, confirma tu suscripción a #{@checker.tracking_number}"
 	end
 
 	def status_updated(checker)
