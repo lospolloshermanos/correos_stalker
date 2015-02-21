@@ -45,7 +45,7 @@ class CorreosChecker < ActiveRecord::Base
           if current_status != status
             updated_attributes = { status: current_status }
             updated_attributes[:completed_at] = Time.now if current_status.include?('Entregado')
-            self.class.where(id: id).update_all(updated_attributes)
+            self.class.update_all(updated_attributes)
             self.reload
             UserMailer.status_updated(self).deliver
           else
