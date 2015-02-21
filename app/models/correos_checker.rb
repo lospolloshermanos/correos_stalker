@@ -24,13 +24,6 @@ class CorreosChecker < ActiveRecord::Base
     begin
       doc = Nokogiri.HTML(open(url))
 
-      #debug#
-      #tempStatus = "#{Time.now.to_s}#{Time.now.to_s}"
-      #tempStatus = "No disponemos de infor"
-      #tempStatus = "Entregado"
-      #doc = Nokogiri::HTML("<html><body><div><tr class='txtCabeceraTabla'><td><span class='txtNormal'>#{tempStatus}</span></td></tr></div></body></html>")
-      #######
-
       if doc.css('body div').first.to_s.match(/No disponemos de infor/)
         if created_at < 7.days.ago
           remove_tracking_number
