@@ -9,5 +9,5 @@
     Tras una semana no hemos encontrado registrado el código de seguimiento en la página web de correos.
 
   %p
-    Si deseas volver a incorporar la suscripción al sistema no dudes en visitar de nuevo la página.
-  = link_to 'https://correos-stalker.herokuapp.com/', 'https://correos-stalker.herokuapp.com/', { :target => "_blank", :class => 'button-link' }
+    Si deseas volver a confirmar la suscripción al sistema haz click en el siguiente enlace durante las próximas 24 horas:
+  = link_to 'Confirmar Subscripción', subscribe_url(@checker.token), { :target => "_blank", :class => 'button-link' }
