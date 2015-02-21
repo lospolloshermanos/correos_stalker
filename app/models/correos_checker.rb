@@ -55,7 +55,7 @@ class CorreosChecker < ActiveRecord::Base
   end
 
   def remove_tracking_number
-    self.class.destroy(id)
+    self.destroy
   end
 
   private
