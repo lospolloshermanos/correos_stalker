@@ -80,12 +80,12 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => ENV['MANDRILL_DOMAIN'] }
 
   config.action_mailer.smtp_settings = {
-    :address   => "smtp.mailgun.org",
+    :address   => ENV['TRANSACTIONAL_EMAIL_ADRESS'],
     :port      => 587, # ports 587 and 2525 are also supported with STARTTLS
     :enable_starttls_auto => true, # detects and uses STARTTLS
-    :user_name => ENV['MAILGUN_USERNAME'],
-    :password  => ENV['MAILGUN_API_KEY'], # SMTP password is any valid API key
+    :user_name => ENV['TRANSACTIONAL_EMAIL_USERNAME'],
+    :password  => ENV['TRANSACTIONAL_EMAIL_API_KEY'], # SMTP password is any valid API key
     :authentication => 'login', # Mandrill supports 'plain' or 'login'
-    :domain => ENV['MAILGUN_DOMAIN'], # your domain to identify your server when connecting
+    :domain => ENV['TRANSACTIONAL_EMAIL_DOMAIN'], # your domain to identify your server when connecting
   }
 end
