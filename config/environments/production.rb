@@ -77,7 +77,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { :host => ENV['MANDRILL_DOMAIN'] }
+  config.action_mailer.default_url_options = { :host => ENV['TRANSACTIONAL_EMAIL_DOMAIN'] }
 
   config.action_mailer.smtp_settings = {
     :address   => ENV['TRANSACTIONAL_EMAIL_ADRESS'],
@@ -85,7 +85,7 @@ Rails.application.configure do
     :enable_starttls_auto => true, # detects and uses STARTTLS
     :user_name => ENV['TRANSACTIONAL_EMAIL_USERNAME'],
     :password  => ENV['TRANSACTIONAL_EMAIL_API_KEY'], # SMTP password is any valid API key
-    :authentication => 'login', # Mandrill supports 'plain' or 'login'
+    :authentication => 'login', # 'plain' or 'login'
     :domain => ENV['TRANSACTIONAL_EMAIL_DOMAIN'], # your domain to identify your server when connecting
   }
 end
